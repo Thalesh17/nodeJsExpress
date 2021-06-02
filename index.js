@@ -4,6 +4,7 @@ const express = require("express")
 const server = express()
 const router = express.Router()
 server.use(express.json({extended: true}))
+const port = process.env.PORT || 8080
 
 router.get('/', (req, res) => {
     res.send(repo.listUser())
@@ -35,7 +36,7 @@ router.delete('/:id',validateUserExists, (req, res) => {
 
 server.use(router)
 
-server.listen(3000, () => {
+server.listen(port, () => {
     console.log('Rodando servidor')
 })
 
